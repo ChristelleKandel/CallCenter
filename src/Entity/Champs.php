@@ -22,6 +22,18 @@ class Champs
     #[ORM\Column(length: 255)]
     private ?string $type_champ = null;
 
+    #[ORM\Column]
+    private ?bool $nullable = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $extras = null;
+
+    #[ORM\Column]
+    private ?bool $visibleForm = null;
+
+    #[ORM\Column]
+    private ?bool $modifiableClient = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +71,54 @@ class Champs
     public function setTypeChamp(string $type_champ): static
     {
         $this->type_champ = $type_champ;
+
+        return $this;
+    }
+
+    public function isNullable(): ?bool
+    {
+        return $this->nullable;
+    }
+
+    public function setNullable(bool $nullable): static
+    {
+        $this->nullable = $nullable;
+
+        return $this;
+    }
+
+    public function getExtras(): ?string
+    {
+        return $this->extras;
+    }
+
+    public function setExtras(?string $extras): static
+    {
+        $this->extras = $extras;
+
+        return $this;
+    }
+
+    public function isVisibleForm(): ?bool
+    {
+        return $this->visibleForm;
+    }
+
+    public function setVisibleForm(bool $visibleForm): static
+    {
+        $this->visibleForm = $visibleForm;
+
+        return $this;
+    }
+
+    public function isModifiableClient(): ?bool
+    {
+        return $this->modifiableClient;
+    }
+
+    public function setModifiableClient(bool $modifiableClient): static
+    {
+        $this->modifiableClient = $modifiableClient;
 
         return $this;
     }

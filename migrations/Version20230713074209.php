@@ -14,7 +14,7 @@ final class Version20230713074209 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'ajout de la table champs';
+        return 'ajout de la table champs et societe';
     }
 
     public function up(Schema $schema): void
