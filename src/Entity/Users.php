@@ -51,6 +51,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $modifiedAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Societe $societe = null;
+
     public function __construct()
     {
         $this->missions = new ArrayCollection();
@@ -211,9 +215,21 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function updateTimestamps()
     {
 	if($this->getCreatedAt() === null) {
-        $this->setCreatedAt(new \DateTimeImmutable);
-	}
+                 $this->setCreatedAt(new \DateTimeImmutable);
+         	}
         $this->setmodifiedAt(new \DateTimeImmutable);
+    }
+
+    public function getSociete(): ?Societe
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(?Societe $societe): static
+    {
+        $this->societe = $societe;
+
+        return $this;
     }
 
 }

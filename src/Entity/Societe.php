@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SocieteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -43,6 +45,14 @@ class Societe
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaires = null;
+
+    #[ORM\OneToMany(mappedBy: 'societe', targetEntity: Users::class)]
+    private Collection $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -165,6 +175,36 @@ class Societe
     public function setCommentaires(?string $commentaires): static
     {
         $this->commentaires = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Users>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(Users $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Users $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getSociete() === $this) {
+                $user->setSociete(null);
+            }
+        }
 
         return $this;
     }

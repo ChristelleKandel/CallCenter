@@ -10,6 +10,7 @@
             <h1>Mon compte</h1>
             <h2> Bienvenue {{ app.user.fullName }}</h2>
             <p> Email: {{ app.user.email }}</p>
+            <p> Société: {{ app.user.societe.nom }}</p>
             <p> <small> Compte créé le {{ app.user.createdAt|date('d/m/Y') }} </small> </p>
             <p> <a href="{{ path('app_account_edit') }}">Modifier mon compte</a> | <a href="{{ path('app_account_password') }}">Changer mon mot de passe </a> </p>
             <p> <a href="{{ path('app_missions_index') }}"> Allez sur la page des missions </a> </p>

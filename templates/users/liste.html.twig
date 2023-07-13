@@ -6,12 +6,13 @@
     <h1>Tous les utilisateurs </h1>
    
         <table class="table">
-            <thead>
+            <thead class="bg-violet">
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
                     <th>Rôle</th>
+                    <th>Société</th>
                 </tr>
             </thead>
             {% for user in users %}
@@ -20,10 +21,11 @@
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.email }}</td>
                 <td>
-                 {% for role in user.roles %}
+                {% for role in user.roles %}
                     {{ role }}
                 {% endfor %}
                 </td> 
+                <td>{{ user.societe.nom }}</td>
             </tbody>
             {% endfor %}
         </table>
