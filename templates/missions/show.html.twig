@@ -12,6 +12,10 @@
                 <td>{{ mission.id }}</td>
             </tr>
             <tr>
+                <th>Société cliente</th>
+                <td>{{ mission.societe.nom }}</td>
+            </tr>
+            <tr>
                 <th>Titre</th>
                 <td>{{ mission.titre }}</td>
             </tr>
@@ -21,11 +25,11 @@
             </tr>
             <tr>
                 <th>Date_debut</th>
-                <td>{{ mission.dateDebut ? mission.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.dateDebut|date('Y-m-d') }}</td>
             </tr>
             <tr>
                 <th>Date_fin</th>
-                <td>{{ mission.dateFin ? mission.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.dateFin|date('Y-m-d') }}</td>
             </tr>
             <tr>
                 <th>Script</th>
@@ -47,24 +51,36 @@
                 <th>Champs</th>
                 <td>
                 {% for champ in mission.champs %}
-                    {{ champ }}
+                    {{ champ.label }}
                 {% endfor %}
                 </td>
-            </tr>
-            <tr>
-                <th>Rdv_date</th>
-                <td>{{ mission.rdvDate ? mission.rdvDate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Fichier</th>
                 <td>{{ mission.fichier }}</td>
             </tr>
+            <tr>
+                <th>Statuts</th>
+                <td>
+                {% for statut in mission.statuts %}
+                    {{ statut.type }}
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Pré-remplis</th>
+                <td>
+                {% for prerempli in mission.preremplis %}
+                    {{ prerempli.texte }}
+                {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_missions_index') }}">back to list</a>
+    <a href="{{ path('app_missions_index') }}">Retour à la liste des missions</a>
 
-    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}">edit</a>
+    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}">Modifier</a>
 
     {{ include('missions/_delete_form.html.twig') }}
 {% endblock %}

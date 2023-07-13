@@ -40,9 +40,6 @@ class Missions
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $email_rdv_prospect_text = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $rdv_date = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fichier = null;
 
@@ -52,10 +49,21 @@ class Missions
     #[ORM\ManyToMany(targetEntity: Champs::class, inversedBy: 'missions')]
     private Collection $champs;
 
+    #[ORM\ManyToMany(targetEntity: Statuts::class)]
+    private Collection $statuts;
+
+    #[ORM\ManyToMany(targetEntity: Prerempli::class)]
+    private Collection $preremplis;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?Societe $societe = null;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->champs = new ArrayCollection();
+        $this->statuts = new ArrayCollection();
+        $this->preremplis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -159,18 +167,6 @@ class Missions
         return $this;
     }
 
-    public function getRdvDate(): ?\DateTimeInterface
-    {
-        return $this->rdv_date;
-    }
-
-    public function setRdvDate(?\DateTimeInterface $rdv_date): static
-    {
-        $this->rdv_date = $rdv_date;
-
-        return $this;
-    }
-
     public function getFichier(): ?string
     {
         return $this->fichier;
@@ -227,6 +223,66 @@ class Missions
     public function removeChamp(Champs $champ): static
     {
         $this->champs->removeElement($champ);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Statuts>
+     */
+    public function getStatuts(): Collection
+    {
+        return $this->statuts;
+    }
+
+    public function addStatut(Statuts $statut): static
+    {
+        if (!$this->statuts->contains($statut)) {
+            $this->statuts->add($statut);
+        }
+
+        return $this;
+    }
+
+    public function removeStatut(Statuts $statut): static
+    {
+        $this->statuts->removeElement($statut);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prerempli>
+     */
+    public function getPreremplis(): Collection
+    {
+        return $this->preremplis;
+    }
+
+    public function addPrerempli(Prerempli $prerempli): static
+    {
+        if (!$this->preremplis->contains($prerempli)) {
+            $this->preremplis->add($prerempli);
+        }
+
+        return $this;
+    }
+
+    public function removePrerempli(Prerempli $prerempli): static
+    {
+        $this->preremplis->removeElement($prerempli);
+
+        return $this;
+    }
+
+    public function getSociete(): ?Societe
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(?Societe $societe): static
+    {
+        $this->societe = $societe;
 
         return $this;
     }

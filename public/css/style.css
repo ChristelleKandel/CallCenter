@@ -33,7 +33,7 @@ h2, .h2{
     background-color: #fcd6a7;
 }
 
-[data-color="monViolet"]{
+/* [data-color="monViolet"]{
     color: white !important;
     background-color: #681239 !important;
 }
@@ -48,7 +48,7 @@ h2, .h2{
 [data-color="monOrange"]{
     color:white !important;
     background-color: #f39108 !important;
-}
+} */
 
     
 /* les liens du premier header */
@@ -226,4 +226,21 @@ td a:hover{
     font-size: 30px;
     font-weight: 500;
     color: #333;
+}
+
+/* Mise en forme automatique des formulaire */
+/* Formulaire id="missions" */
+
+@media (min-width: 768px) {
+    #missions div{
+        margin: 3px;
+    }
+    #missions div label{
+        width: 10%;
+    }
+    #missions div textarea{
+        width: 100%;
+        min-height: 150px;
+    }
+
 }

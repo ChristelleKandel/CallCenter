@@ -49,9 +49,13 @@ class Societe
     #[ORM\OneToMany(mappedBy: 'societe', targetEntity: Users::class)]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'societe', targetEntity: Missions::class)]
+    private Collection $missions;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->missions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -203,6 +207,36 @@ class Societe
             // set the owning side to null (unless already changed)
             if ($user->getSociete() === $this) {
                 $user->setSociete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Missions>
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Missions $mission): static
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions->add($mission);
+            $mission->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Missions $mission): static
+    {
+        if ($this->missions->removeElement($mission)) {
+            // set the owning side to null (unless already changed)
+            if ($mission->getSociete() === $this) {
+                $mission->setSociete(null);
             }
         }
 
