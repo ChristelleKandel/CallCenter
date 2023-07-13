@@ -45,7 +45,11 @@
             </tr>
             <tr>
                 <th>Champs</th>
-                <td>{{ mission.champs }}</td>
+                <td>
+                {% for champ in mission.champs %}
+                    {{ champ }}
+                {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Rdv_date</th>

@@ -35,7 +35,11 @@
                 <td>{{ mission.commentaires }}</td>
                 <td>{{ mission.emailRdvClientText }}</td>
                 <td>{{ mission.emailRdvProspectText }}</td>
-                <td>{{ mission.champs }}</td>
+                <td>
+                {% for champ in mission.champs %}
+                    {{ champ }}
+                {% endfor %}
+                </td>
                 <td>{{ mission.rdvDate ? mission.rdvDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ mission.fichier }}</td>
                 <td>

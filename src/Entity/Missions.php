@@ -40,9 +40,6 @@ class Missions
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $email_rdv_prospect_text = null;
 
-    #[ORM\Column(type: Types::OBJECT, nullable: true)]
-    private ?object $champs = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $rdv_date = null;
 
@@ -52,9 +49,13 @@ class Missions
     #[ORM\ManyToMany(targetEntity: Users::class, inversedBy: 'missions')]
     private Collection $user;
 
+    #[ORM\ManyToMany(targetEntity: Champs::class, inversedBy: 'missions')]
+    private Collection $champs;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
+        $this->champs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,18 +159,6 @@ class Missions
         return $this;
     }
 
-    public function getChamps(): ?object
-    {
-        return $this->champs;
-    }
-
-    public function setChamps(?object $champs): static
-    {
-        $this->champs = $champs;
-
-        return $this;
-    }
-
     public function getRdvDate(): ?\DateTimeInterface
     {
         return $this->rdv_date;
@@ -214,6 +203,30 @@ class Missions
     public function removeUser(Users $user): static
     {
         $this->user->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Champs>
+     */
+    public function getChamps(): Collection
+    {
+        return $this->champs;
+    }
+
+    public function addChamp(Champs $champ): static
+    {
+        if (!$this->champs->contains($champ)) {
+            $this->champs->add($champ);
+        }
+
+        return $this;
+    }
+
+    public function removeChamp(Champs $champ): static
+    {
+        $this->champs->removeElement($champ);
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ChampsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChampsRepository::class)]
@@ -33,6 +35,14 @@ class Champs
 
     #[ORM\Column]
     private ?bool $modifiableClient = null;
+
+    #[ORM\ManyToMany(targetEntity: Missions::class, mappedBy: 'champs')]
+    private Collection $missions;
+
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +129,33 @@ class Champs
     public function setModifiableClient(bool $modifiableClient): static
     {
         $this->modifiableClient = $modifiableClient;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Missions>
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Missions $mission): static
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions->add($mission);
+            $mission->addChamp($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Missions $mission): static
+    {
+        if ($this->missions->removeElement($mission)) {
+            $mission->removeChamp($this);
+        }
 
         return $this;
     }
