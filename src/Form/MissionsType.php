@@ -61,8 +61,14 @@ class MissionsType extends AbstractType
                 'class'=>Statuts::class,
                 'choice_label'=>'type',
                 'multiple' => true,
-                'expanded' => true,
+                // 'expanded' => true,
                 'label' => 'Choisir les statuts',
+                'choice_attr' => [
+                    '0' => ['data-color' => "monBleu"],
+                    '1' => ['data-color' => "monOrange"],
+                    '2' => ['data-color' => 'monVert'],
+                    '3' => ['data-color' => "monViolet"]
+                ]
             ])
             ->add('preremplis', EntityType::class, [
                 'class'=>Prerempli::class,
