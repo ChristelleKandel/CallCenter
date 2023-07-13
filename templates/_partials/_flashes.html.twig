@@ -1,0 +1,20 @@
+        {# Ou, pour une version alert pop-up plutot que alert en bandeau: #}
+        {% for message in app.flashes('notice') %}
+            <script>
+            Swal.fire(
+                'Réussite !',
+                '{{ message }}',
+                'success'
+            )
+            </script>
+        {% endfor %}
+        
+        {# Pour un type autre que notice, on utilise les alert bootstrap en guise de flash en  mettant le type d'alert  #}
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+

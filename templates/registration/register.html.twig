@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('notice') %}
+        <script>
+            Swal.fire(
+            'Réussite !',
+            'Inscription Réussie.',
+            'success'
+            )  
+        </script>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-6 mx-auto"> 
+            <h1>Je crée mon compte</h1>
+            {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm, {'attr': {'class': 'my-5'}}) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.nom) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.prenom) }}
+                    </div>
+                    <div class="col-md-12">
+                    {{ form_row(registrationForm.email) }}
+                    </div>
+                    <div class="col-md-12 d-none">
+                        {{ form_row(registrationForm.roles) }}
+                    </div>
+                    <div class="col-md-12">
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                    </div>
+        {# {{ form_row(registrationForm.agreeTerms) }} #}
+
+        <button type="submit" class="text-white btn-green mt-3 form-control mb-3">Inscription</button>
+    {{ form_end(registrationForm) }}
+
+    <h4> Ou je me connecte:
+    <a class="nav-link btnspecial btn-violet" href=" {{ path('app_login') }}"><i class="fa-solid fa-power-off"></i></a>
+    </h4>
+
+{% endblock %}

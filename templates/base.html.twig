@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <title>{% block title %}Bienvenue{% endblock %}</title>
+        <link rel="shortcut icon" href="{{asset('images/picto.jpg')}}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- si besoin police google font dans app.css sous forme @import> -->
+
+         <!-- Feuilles de style  + ajout de bootstrap que l'on a chargé dans public/assets -->
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+         <!-- Feuilles de style pour effet des pop up alert en JS -->
+        <link rel="stylesheet" href="{{asset('css/sweetalert2.css')}}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        <!-- + Feuille de style perso créée dans public/assets -->
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <!-- CDN de Jquery -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <!-- Fichiers JS + ajout de bootstrap que l'on a chargé dans public/assets-->
+        <script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
+        <script src="{{asset('js/reveal.js')}}" defer></script>
+        <!-- script JS pour alert info sympas sur la fiche salarié -->
+        <script src="{{ asset('js/sweetalert2.js') }}"></script>
+        <!-- script JS pour calcul auto du nombre de jours de congés demandés -->
+        <script src="{{ asset('js/moment.js') }}"></script>
+        <!--  CDN de FullCalendar -->
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js" integrity="sha256-dHUNnePy81fXq4D/wfu7cPsEIP7zl6MvLb84jtZf+UY=" crossorigin="anonymous"></script>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
+        <!-- CDN de Font-awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="container-fluid">
+        {# Ajout d'un header et d'une navigation via des fichiers créés dans templates/_partials #}
+        {% include "_partials/_header.html.twig" %}
+        {% include "_partials/_nav.html.twig" %}
+        {% include "_partials/_flashes.html.twig" %}
+
+        <div class="row">
+            {# commentaire twig non visible sur le code source contrairement aux commentaires html #}
+            <!-- commentaire html visible dans l'inspecteur -->
+            {# Personnalisation de main grâce à bootstrap #}
+            <main role="main" class="col-md-9 mx-auto col-lg-10 p-3">
+                {% block body %}
+                {% endblock %}
+            </main>
+        </div>
+        {% include "_partials/_footer.html.twig" %}
     </body>
 </html>

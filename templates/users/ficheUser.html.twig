@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('notice') %}
+        <script>
+            Swal.fire(
+            'Réussite !',
+            'Modification Réussie.',
+            'success'
+            )  
+        </script>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-6 mx-auto"> 
+            <h1>Compte de {{ user.fullName }}</h1>
+            {{ form_errors(form) }}
+            {{ form_start(form, {'attr': {'class': 'my-5'}}) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.nom) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.prenom) }}
+                    </div>
+                    <div class="col-md-12">
+                    {{ form_row(form.email) }}
+                    </div>
+                    <div class="col-md-12">
+                        {{ form_row(form.roles) }}
+                    </div>
+
+                    {# {{ form_row(form.agreeTerms) }} #}
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-green d-grid gap-2 w-100">Enregistrer les modifications</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Missions index{% endblock %}
+
+{% block body %}
+    <h1>Missions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Script</th>
+                <th>Commentaires</th>
+                <th>Email_rdv_client_text</th>
+                <th>Email_rdv_prospect_text</th>
+                <th>Champs</th>
+                <th>Rdv_date</th>
+                <th>Fichier</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mission in missions %}
+            <tr>
+                <td>{{ mission.id }}</td>
+                <td>{{ mission.titre }}</td>
+                <td>{{ mission.type }}</td>
+                <td>{{ mission.dateDebut ? mission.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.dateFin ? mission.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.script }}</td>
+                <td>{{ mission.commentaires }}</td>
+                <td>{{ mission.emailRdvClientText }}</td>
+                <td>{{ mission.emailRdvProspectText }}</td>
+                <td>{{ mission.champs }}</td>
+                <td>{{ mission.rdvDate ? mission.rdvDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mission.fichier }}</td>
+                <td>
+                    <a href="{{ path('app_missions_show', {'id': mission.id}) }}">show</a>
+                    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_missions_new') }}">Create new</a>
+{% endblock %}

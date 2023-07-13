@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edit {{ app.user.fullName }} {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="text-center">Edition du compte de {{ app.user.fullName }}</h1>
+            {{ form_start(monFormulaire) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(monFormulaire.nom) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(monFormulaire.prenom) }}
+                    </div>
+                </div>
+                {{ form_rest(monFormulaire) }}
+
+                <button type="submit" class="btn btn-lg btn-green d-grid gap-2 w-100">Enregistrer les modifications</button>
+
+            {{ form_end(monFormulaire) }}
+        </div>
+    </div>
+{% endblock %}

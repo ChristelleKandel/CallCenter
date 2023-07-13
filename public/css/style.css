@@ -1,0 +1,229 @@
+main {
+    min-height: 50vh;
+    }
+    
+h1, .h1{
+    color: #681239 !important;
+    margin: 20px;
+    font-size: 2.5rem;
+}
+
+h2, .h2{
+    color: #04a39e !important;
+    margin: 15px;
+    font-size: 2rem;
+}
+
+/* Les couleurs Insercall */
+
+.bg-violet{
+    color:#681239 !important;
+    background-color: #b993a0;
+}
+.bg-vert{
+    color: #94c120 !important;
+    background: #d4e4a6;
+}
+.bg-bleu{
+    color:#04a39e !important;
+    background-color: #b1d4d0;
+}
+.bg-orange{
+    color:#f39108 !important;
+    background-color: #fcd6a7;
+}
+
+[data-color="monViolet"]{
+    color: white !important;
+    background-color: #681239 !important;
+}
+[data-color="monVert"]{
+    color: white !important;
+    background: #94c120 !important;
+}
+[data-color="monBleu"]{
+    color: white !important;
+    background-color: #04a39e !important;
+}
+[data-color="monOrange"]{
+    color:white !important;
+    background-color: #f39108 !important;
+}
+
+    
+/* les liens du premier header */
+.header a{
+    color: black;
+    text-decoration: none;
+}
+.btn a{
+    color: white !important;
+    text-decoration: none !important;
+}
+.btn-violet a:hover, .text-violet{
+    color: #681239 !important;
+}
+.btn-green a:hover, .text-green{
+    color: #94c120 !important;
+}
+.btn-bleu a:hover, .text-bleu{
+    color: #04a39e !important;
+}
+.btn-orange a:hover, .text-orange{
+    color: #f39108 !important;
+}
+
+/* Les boutons de navigations*/
+.btnspecial{
+    border-radius: 10px 100px / 120px;
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+.btnspecial:hover{
+    border-radius: 100px 10px / 120px;
+}
+.btn-green{
+    color: white !important;
+    background: #94c120;
+}
+.btn-green:hover{
+    color: #94c120 !important;
+    background: #d4e4a6;
+    border: #94c120 2px solid;
+}
+
+.btn-bleu{
+    color: white !important;
+    background-color: #04a39e;
+}
+.btn-bleu:hover{
+    color:#04a39e !important;
+    background-color: #b1d4d0;
+    border: #04a39e 2px solid;
+}
+
+.btn-violet{
+    color: white !important;
+    background-color: #681239;
+}
+.btn-violet:hover{
+    color:#681239 !important;
+    background-color: #b993a0;
+    border: #681239 2px solid;
+}
+
+.btn-orange{
+    color: white !important;
+    background-color: #f39108;
+}
+.btn-orange:hover{
+    color:#f39108 !important;
+    background-color: #fcd6a7;
+    border: #f39108 2px solid;
+}
+
+/* bouton signalisation fiche salarié */
+.help:hover {
+    background: white;
+    color: #681239;
+  }
+
+/*Index admin */
+.index li a{
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.index li a:hover{
+    color: darkslategray;
+    text-decoration: none;
+}
+
+/*Le formulaire */
+form{
+    margin-bottom: 20px;
+}
+
+/*Le tableau des salariés */
+td a{
+    color: #681239;
+    text-decoration: none;
+    font-weight: 700;
+}
+td a:hover{
+    color: #04a39e;
+    cursor: help;
+}
+
+/* Les alertes */
+
+.alert{
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: #681239;
+    /*Par défaut Bootsrtap met une border à ses classes alertes, je peux les retirer et personnaliser mon CSS */
+    /* margin: 0;
+    border: none;
+    border-radius: 0; */
+}
+/* .alert-success{
+        background-color: green;
+}
+.alert-info{
+        background-color: red;
+} */
+
+/*Le calendrier */
+
+#calendar{
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/*la date d'accueil account */
+.calendar {
+    position: relative;
+    width: 300px;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar #monthName {
+    position: relative;
+    padding: 5px 10px;
+    background: #f19200;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.calendar #dayName {
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: 300;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.calendar #dayNumber {
+    margin-top: 20px;
+    line-height: 1em;
+    font-size: 80px;
+    font-weight: 700;
+    color: #333;
+}
+
+.calendar #year {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #333;
+}
