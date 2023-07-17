@@ -34,33 +34,39 @@ h2, .h2{
 }
 
 /* les couleurs des statuts */
-[data-color="monViolet"]{
-    color: white !important;
+[data-color="pasInteressé"]{
     background-color: #681239 !important;
 }
-[data-color="monVert"]{
+[data-color="RDV"]{
     background: #94c120 !important;
 }
-[data-color="monBleu"]{
+[data-color="injoignable"]{
     background-color: #04a39e !important;
 }
-[data-color="monOrange"]{
+[data-color="rappellera"]{
     background-color: #f39108 !important;
 } 
-[data-color="monRouge"]{
-    color: white !important;
+[data-color="Urgent"]{
     background-color: #f50707 !important;
 }
-[data-color="monBlanc"]{
+[data-color="sansStatut"]{
     background: #ffff !important;
 }
-[data-color="monGris"]{
+[data-color="erreurTel"]{
     background-color: #9ba6a5 !important;
 }
-[data-color="monJaune"]{
+[data-color="aRappeler"]{
     background-color: #e9f32d !important;
 } 
-
+[data-color="doublon"]{
+    background-color: #c697c7 !important;
+}
+[data-color="nonConcerné"]{
+    background-color: #d5b99e !important;
+}
+[data-color="pasRappel"]{
+    background-color: #b1d4d0 !important;
+}
     
 /* les liens du premier header */
 .header a{
@@ -256,6 +262,9 @@ td a:hover{
 
 }
 
-#missions_champs label, #missions_preremplis label{
-    width: 10% !important;
+#missions_champs label, #missions_preremplis label, #missions_statuts label{
+    width: 8% !important;
+}
+#missions_champs, #missions_preremplis, #missions_statuts{
+    border: solid 1px #9ba6a5;
 }

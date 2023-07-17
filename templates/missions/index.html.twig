@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Toutes les missions</h1>
-
+    <a href="{{ path('app_missions_new') }}" class="btn btn-lg btn-green d-grid gap-2 col-6 mx-auto my-2">Créer une nouvelle mission</a>
     <table class="table">
         <thead>
             <tr>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
         {% for mission in missions %}
-            <tr>
+            <tr style="background-color:{{mission.type.color}};">
                 <td>{{ mission.societe.nom }}</td>
                 <td>{{ mission.titre }}</td>
                 <td>{{ mission.type.type }}</td>
@@ -30,8 +30,8 @@
                 {% endfor %}
                 </td> #}
                 <td>
-                    <a href="{{ path('app_missions_show', {'id': mission.id}) }}">Détails</a>
-                    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}">Modification</a>
+                    <a href="{{ path('app_missions_show', {'id': mission.id}) }}" class="btn btn-green"><i class="fa-solid fa-magnifying-glass"></i> Voir plus</a>
+                    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}" class="btn btn-bleu">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -41,6 +41,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_missions_new') }}">Créer une nouvelle mission</a>
 {% endblock %}

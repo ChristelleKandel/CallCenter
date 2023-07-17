@@ -3,7 +3,7 @@
 {% block title %}Missions{% endblock %}
 
 {% block body %}
-    <h1>Missions</h1>
+    <h1>Mission {{ mission.titre }}</h1>
 
     <table class="table">
         <tbody>
@@ -78,9 +78,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_missions_index') }}">Retour à la liste des missions</a>
-
-    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}">Modifier</a>
-
+    <a href="{{ path('app_missions_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour à la liste des missions</a>
+    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}" class="btn btn-lg btn-green d-grid gap-2 col-6 mx-auto my-2">Modifier</a>
     {{ include('missions/_delete_form.html.twig') }}
 {% endblock %}

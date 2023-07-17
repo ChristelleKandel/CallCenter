@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Modifier une mission</h1>
 
-    {{ include('missions/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('missions/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_missions_index') }}">Retour à la liste des missions</a>
+    <a href="{{ path('app_missions_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour à la liste des missions</a>
 
     {{ include('missions/_delete_form.html.twig') }}
 {% endblock %}

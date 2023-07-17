@@ -76,21 +76,29 @@ class MissionsType extends AbstractType
                 'class'=>Statuts::class,
                 'choice_label'=>'type',
                 'multiple' => true,
-                // 'expanded' => true,
-                'label' => 'Sélectionner les statuts pour cette mission (ctrl clic)',
-                'choice_attr' => [
-                    '0' => ['data-color' => "monViolet"],
-                    '1' => ['data-color' => "monOrange"],
-                    '2' => ['data-color' => 'monVert'],
-                    '3' => ['data-color' => "monViolet"]
-                ]
+                'expanded' => true,
+                'label' => 'Sélectionner les statuts pour cette mission',
+                // 'choice_attr' => [
+                //     '0' => ['data-color' => "Urgent"],
+                //     '1' => ['data-color' => "sansStatut"],
+                //     '2' => ['data-color' => 'aRappeler'],
+                //     '3' => ['data-color' => "RDV"],
+                //     '4' => ['data-color' => "pasInteressé"],
+                //     '5' => ['data-color' => "injoignable"],
+                //     '6' => ['data-color' => 'doublon'],
+                //     '7' => ['data-color' => "nonConcerné"],
+                //     '8' => ['data-color' => "erreurTel"],
+                //     '9' => ['data-color' => "rappellera"],
+                //     '10' => ['data-color' => 'docEnvoyé'],
+                //     '11' => ['data-color' => "pasRappel"]
+                // ]
             ])
             ->add('preremplis', EntityType::class, [
                 'class'=>Prerempli::class,
                 'choice_label'=>'texte',
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Sélectionner les pré-remplis pour cette mission (ctrl clic)',
+                'label' => 'Sélectionner les pré-remplis pour cette mission',
             ])
         ;
     }
