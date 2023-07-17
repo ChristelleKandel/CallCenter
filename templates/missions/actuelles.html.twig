@@ -4,40 +4,82 @@
 
 {% block body %}
     <h1 class="text-center">Missions en cours</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Société</th>
-                <th>Titre</th>
-                <th>Type</th>
-                <th>Début</th>
-                <th>Fin</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mission in missions %}
-            <tr style="background-color:{{mission.type.color}};">
-                <td>{{ mission.societe.nom }}</td>
-                <td>{{ mission.titre }}</td>
-                <td>{{ mission.type.type }}</td>
-                <td>{{ mission.dateDebut|date('Y-m-d') }}</td>
-                <td>{{ mission.dateFin|date('Y-m-d') }}</td>
-                {# <td>
-                {% for champ in mission.champs %}
-                    {{ champ.label }}
+    <div class="row">
+        <!-- RECEPTION -->
+        <div class="col-md-4">
+            <h2>Réceptions</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Société</th>
+                        <th>Mission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mission in receptions %}
+                    <tr>
+                        <td>{{ mission.societe.nom }}</td>
+                        <td><a href="{{ path('app_missions_details', {'id': mission.id}) }}">{{ mission.titre }}</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">Aucune information trouvée</td>
+                    </tr>
                 {% endfor %}
-                </td> #}
-                <td>
-                    <a href="{{ path('app_missions_show', {'id': mission.id}) }}" class="btn btn-green"><i class="fa-solid fa-magnifying-glass"></i> Voir plus</a>
-                    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}" class="btn btn-bleu">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="13">Aucune information trouvée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div> <!-- /col-4 -->
+        <!-- PROSPECTION -->
+        <div class="col-md-4">
+            <h2>Prospections</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Société</th>
+                        <th>Mission</th>
+                        <th>Progrès</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mission in prospections %}
+                    <tr>
+                        <td>{{ mission.societe.nom }}</td>
+                        <td>{{ mission.titre }}</td>
+                        <td> # </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">Aucune information trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div> <!-- /col-4 -->
+        <!-- ENQUETE -->
+        <div class="col-md-4">
+            <h2>Enquêtes</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Société</th>
+                        <th>Mission</th>
+                        <th>Progrès</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mission in enquetes %}
+                    <tr>
+                        <td>{{ mission.societe.nom }}</td>
+                        <td>{{ mission.titre }}</td>
+                        <td> # </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">Aucune information trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div> <!-- /col-4 -->
+    </div> <!-- /row -->
 {% endblock %}

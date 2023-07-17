@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Missions;
+use App\Entity\Users;
 use App\Form\MissionsType;
 use App\Repository\MissionsRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,11 +27,11 @@ class MissionsController extends AbstractController
     public function actuel(MissionsRepository $missionsRepository): Response
     {
         $today = new \DateTime('now');
-        // $debut = $this->getDateDebut();
-        // $fin = $this->getDateFin();
         // dd($today);
         return $this->render('missions/actuelles.html.twig', [
-            'missions' => $missionsRepository->findByActualDates($today),
+            'enquetes' => $missionsRepository->findEnqueteByActualDates($today),
+            'prospections' => $missionsRepository->findProspectionByActualDates($today),
+            'receptions' => $missionsRepository->findReceptionByActualDates($today),
         ]);
     }
 
@@ -53,11 +54,21 @@ class MissionsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_missions_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'app_missions_show', methods: ['GET'])]
     public function show(Missions $mission): Response
     {
         return $this->render('missions/show.html.twig', [
             'mission' => $mission,
+        ]);
+    }
+
+    #[Route('/{id}/details', name: 'app_missions_details')]
+    public function details(Missions $mission): Response
+    {
+        $user = $this->getUser();
+        return $this->render('missions/details.html.twig', [
+            'mission' => $mission,
+            'user' => $user
         ]);
     }
 

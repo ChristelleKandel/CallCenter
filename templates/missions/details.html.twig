@@ -4,41 +4,24 @@
 
 {% block body %}
     <h1>Mission {{ mission.titre }}</h1>
+    DU {{ mission.dateDebut|date('d-m-Y') }} au {{ mission.dateFin|date('d-m-Y') }}
+    <h2>Une mission confiée par {{ mission.societe.nom }} </h2>
+    <p>
+        Mettre l'image et lien balise img{{ mission.societe.logo }}
+        </br>
+        Ville: {{ mission.societe.ville }} </br>
+        Téléphone: {{ mission.societe.tel }} </br>
+        Contact {{ mission.societe.nomContact }} </br>
+        {{ mission.societe.commentaires }}
+    </p>
+    <p>
+        <h4> SCRIPT </h4>
+        {{ mission.script }} </br>
+        {{ mission.commentaires }}
+    </p>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ mission.id }}</td>
-            </tr>
-            <tr>
-                <th>Société cliente</th>
-                <td>{{ mission.societe.nom }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ mission.titre }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ mission.type.type }}</td>
-            </tr>
-            <tr>
-                <th>Date_debut</th>
-                <td>{{ mission.dateDebut|date('d-m-Y') }}</td>
-            </tr>
-            <tr>
-                <th>Date_fin</th>
-                <td>{{ mission.dateFin|date('d-m-Y') }}</td>
-            </tr>
-            <tr>
-                <th>Script</th>
-                <td>{{ mission.script }}</td>
-            </tr>
-            <tr>
-                <th>Commentaires</th>
-                <td>{{ mission.commentaires }}</td>
-            </tr>
             <tr>
                 <th>Email_rdv_client_text</th>
                 <td>{{ mission.emailRdvClientText }}</td>

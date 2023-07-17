@@ -42,13 +42,41 @@ class MissionsRepository extends ServiceEntityRepository
    /**
     * @return Missions[] Returns an array of Missions objects
     */
-   public function findByActualDates($today): array
+   public function findEnqueteByActualDates($today): array
    {
        return $this->createQueryBuilder('m')
            ->andWhere(':today BETWEEN m.date_debut AND m.date_fin')
+           ->andWhere('m.type = 1')
            ->setParameter('today', $today)
            ->orderBy('m.date_debut', 'ASC')
-        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+      /**
+    * @return Missions[] Returns an array of Missions objects
+    */
+    public function findProspectionByActualDates($today): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere(':today BETWEEN m.date_debut AND m.date_fin')
+            ->andWhere('m.type = 2')
+            ->setParameter('today', $today)
+            ->orderBy('m.date_debut', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+       /**
+    * @return Missions[] Returns an array of Missions objects
+    */
+   public function findReceptionByActualDates($today): array
+   {
+       return $this->createQueryBuilder('m')
+           ->andWhere(':today BETWEEN m.date_debut AND m.date_fin')
+           ->andWhere('m.type = 3')
+           ->setParameter('today', $today)
+           ->orderBy('m.date_debut', 'ASC')
            ->getQuery()
            ->getResult()
        ;
