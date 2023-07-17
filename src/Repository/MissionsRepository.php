@@ -39,6 +39,21 @@ class MissionsRepository extends ServiceEntityRepository
         }
     }
 
+   /**
+    * @return Missions[] Returns an array of Missions objects
+    */
+   public function findByActualDates($today): array
+   {
+       return $this->createQueryBuilder('m')
+           ->andWhere(':today BETWEEN m.date_debut AND m.date_fin')
+           ->setParameter('today', $today)
+           ->orderBy('m.date_debut', 'ASC')
+        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return Missions[] Returns an array of Missions objects
 //     */

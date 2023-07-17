@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Missions;
 use App\Form\MissionsType;
 use App\Repository\MissionsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/missions')]
 class MissionsController extends AbstractController
@@ -18,6 +19,18 @@ class MissionsController extends AbstractController
     {
         return $this->render('missions/index.html.twig', [
             'missions' => $missionsRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/actuelles', name: 'app_missions_actuelles', methods: ['GET'])]
+    public function actuel(MissionsRepository $missionsRepository): Response
+    {
+        $today = new \DateTime('now');
+        // $debut = $this->getDateDebut();
+        // $fin = $this->getDateFin();
+        // dd($today);
+        return $this->render('missions/actuelles.html.twig', [
+            'missions' => $missionsRepository->findByActualDates($today),
         ]);
     }
 
