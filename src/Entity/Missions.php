@@ -19,9 +19,6 @@ class Missions
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_debut = null;
 
@@ -58,6 +55,9 @@ class Missions
     #[ORM\ManyToOne(inversedBy: 'missions')]
     private ?Societe $societe = null;
 
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?TypeMission $type = null;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -79,18 +79,6 @@ class Missions
     public function setTitre(string $titre): static
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -283,6 +271,18 @@ class Missions
     public function setSociete(?Societe $societe): static
     {
         $this->societe = $societe;
+
+        return $this;
+    }
+
+    public function getType(): ?TypeMission
+    {
+        return $this->type;
+    }
+
+    public function setType(?TypeMission $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

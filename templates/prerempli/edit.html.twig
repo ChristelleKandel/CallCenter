@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Prerempli{% endblock %}
+
+{% block body %}
+    <h1>Edit Prerempli</h1>
+
+    {{ include('prerempli/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_prerempli_index') }}">back to list</a>
+
+    {{ include('prerempli/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Prerempli{% endblock %}
+
+{% block body %}
+    <h1>Create new Prerempli</h1>
+
+    {{ include('prerempli/_form.html.twig') }}
+
+    <a href="{{ path('app_prerempli_index') }}">back to list</a>
+{% endblock %}

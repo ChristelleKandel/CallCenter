@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prerempli{% endblock %}
+
+{% block body %}
+    <h1>Prerempli</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ prerempli.id }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ prerempli.texte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_prerempli_index') }}">back to list</a>
+
+    <a href="{{ path('app_prerempli_edit', {'id': prerempli.id}) }}">edit</a>
+
+    {{ include('prerempli/_delete_form.html.twig') }}
+{% endblock %}

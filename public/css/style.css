@@ -39,16 +39,26 @@ h2, .h2{
     background-color: #681239 !important;
 }
 [data-color="monVert"]{
-    color: white !important;
     background: #94c120 !important;
 }
 [data-color="monBleu"]{
-    color: white !important;
     background-color: #04a39e !important;
 }
 [data-color="monOrange"]{
-    color:white !important;
     background-color: #f39108 !important;
+} 
+[data-color="monRouge"]{
+    color: white !important;
+    background-color: #f50707 !important;
+}
+[data-color="monBlanc"]{
+    background: #ffff !important;
+}
+[data-color="monGris"]{
+    background-color: #9ba6a5 !important;
+}
+[data-color="monJaune"]{
+    background-color: #e9f32d !important;
 } 
 
     
@@ -237,11 +247,15 @@ td a:hover{
         margin: 3px;
     }
     #missions div label{
-        width: 10%;
+        width: 100%;
     }
     #missions div textarea{
         width: 100%;
         min-height: 150px;
     }
 
+}
+
+#missions_champs label, #missions_preremplis label{
+    width: 10% !important;
 }

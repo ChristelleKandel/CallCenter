@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statuts index{% endblock %}
+
+{% block body %}
+    <h1>Statuts index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Couleur</th>
+                <th>Definitif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for statut in statuts %}
+            <tr>
+                <td>{{ statut.id }}</td>
+                <td>{{ statut.type }}</td>
+                <td>{{ statut.couleur }}</td>
+                <td>{{ statut.definitif ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_statuts_show', {'id': statut.id}) }}">show</a>
+                    <a href="{{ path('app_statuts_edit', {'id': statut.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_statuts_new') }}">Create new</a>
+{% endblock %}
