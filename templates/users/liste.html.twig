@@ -29,8 +29,8 @@
                 </td> 
                 <td>{{ user.societe.nom }}</td>
                 <td>
-                    <a href="{{ path('app_users_fiche', {'id': user.id}) }}">modifier</a>
-
+                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-green"><i class="fa-solid fa-magnifying-glass"></i> Voir plus</a>
+                    <a href="{{ path('app_users_fiche', {'id': user.id}) }}" class="btn btn-bleu">modifier</a>
                 </td>
             </tbody>
             {% endfor %}

@@ -58,13 +58,6 @@ class UsersType extends AbstractType
                 'class' => 'form-control mb-1'
             ),
             ])
-        ->add('missions', EntityType::class, [
-            'class'=>Missions::class, 
-            'choice_label'=>'titre', 
-            'label' => 'Nom des missions auxquelles cet utilisateur a accès (ctrl clic pour choix multiple)',
-            // 'expanded' => true,
-            'multiple' => true,
-            ])
         ->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
             'mapped' => false,

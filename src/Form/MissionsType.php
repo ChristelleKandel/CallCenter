@@ -9,6 +9,8 @@ use App\Entity\Statuts;
 use App\Entity\Missions;
 use App\Entity\Prerempli;
 use App\Entity\TypeMission;
+use App\Repository\UsersRepository;
+use App\Repository\MissionsRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -49,6 +51,9 @@ class MissionsType extends AbstractType
                 'label' => 'Nom des clients ayant accès à cette mission (ctrl clic pour choix multiple)',
                 // 'expanded' => true,
                 'multiple' => true,
+                // 'query_builder' => function(UsersRepository $userepo){
+                //     return $userepo->findByRole("ROLE_CLIENT_VIEW");
+                // },
                 ])
             ->add('commentaires', null, [
                 'label' => 'Commentaires de la mission à afficher avant le script'

@@ -40,11 +40,13 @@ class UsersFormType extends AbstractType
                     'Administrateur' => 'ROLE_ADMIN',
                     'client' => 'ROLE_CLIENT_VIEW',
                     'client+' => 'ROLE_CLIENT_MODIF',
-
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'label' => 'Rôles'
+                'label' => 'Rôles',
+                'attr' => array(
+                    'class' => 'form-control mb-1'
+                )
             ])
             ->add('email', null, [
                 'label' => 'Email',
@@ -59,13 +61,6 @@ class UsersFormType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control mb-1'
                 ),
-                ])
-            ->add('missions', EntityType::class, [
-                'class'=>Missions::class, 
-                'choice_label'=>'titre', 
-                'label' => 'Nom des missions auxquelles cet utilisateur a accès (ctrl clic pour choix multiple)',
-                // 'expanded' => true,
-                'multiple' => true,
                 ])
         ;
     }

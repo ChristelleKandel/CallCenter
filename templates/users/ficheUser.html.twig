@@ -39,6 +39,7 @@
                 <button type="submit" class="btn btn-lg btn-green d-grid gap-2 w-100">Enregistrer les modifications</button>
                 
             {{ form_end(form) }}
+            <a href="{{ path('app_missions_index') }}" class="btn btn-lg btn-orange d-grid gap-2 col-12 mx-auto my-2">Ajouter des missions</a>
             <a href="{{ path('app_users') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-12 mx-auto my-2">Retour liste</a>
             {{ include('users/_delete_form.html.twig') }}
         </div>

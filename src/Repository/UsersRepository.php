@@ -55,6 +55,21 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
 
         $this->save($user, true);
     }
+    
+    /**
+    * @return Users[] Returns an array of Users objects
+    */
+    public function findByRole($role) 
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.roles = :val')
+            ->setParameter('val', $role)
+            ->orderBy('u.nom', 'ASC')
+            // ->getQuery()
+            // ->getResult()
+        ;
+    }
+
 
 //    /**
 //     * @return Users[] Returns an array of Users objects
