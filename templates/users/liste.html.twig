@@ -3,7 +3,8 @@
 {% block title %}Users{% endblock %}
 
 {% block body %}
-    <h1>Tous les utilisateurs </h1>
+    <h1 class="text-center">Tous les utilisateurs </h1>
+    <div class="d-flex justify-content-center"><a href="{{ path('app_users_new') }}" class="btn btn-lg btn-green m-2">Ajouter un utilisateur</a><a href="{{ path('app_societe_index') }}" class="btn btn-lg btn-orange m-2">Voir les sociétés</a><a href="{{ path('app_societe_index') }}" class="btn btn-lg btn-orange m-2">Ajouter une société</a></div>
    
         <table class="table">
             <thead class="bg-violet">
@@ -13,11 +14,12 @@
                     <th>Email</th>
                     <th>Rôle</th>
                     <th>Société</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             {% for user in users %}
             <tbody>
-                <td><a href="{{ path('app_users_fiche', {'id': user.id}) }}" title="Accès à sa fiche">{{ user.nom }}</a></td>
+                <td><a href="{{ path('app_users_show', {'id': user.id}) }}" title="Accès à sa fiche">{{ user.nom }}</a></td>
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.email }}</td>
                 <td>
@@ -26,6 +28,10 @@
                 {% endfor %}
                 </td> 
                 <td>{{ user.societe.nom }}</td>
+                <td>
+                    <a href="{{ path('app_users_fiche', {'id': user.id}) }}">modifier</a>
+
+                </td>
             </tbody>
             {% endfor %}
         </table>

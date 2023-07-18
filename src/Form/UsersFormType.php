@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Users;
 use App\Entity\Societe;
+use App\Entity\Missions;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -35,8 +36,11 @@ class UsersFormType extends AbstractType
                 ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Administrateur' => 'ROLE_ADMIN'
+                    'TC' => 'ROLE_TC',
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'client' => 'ROLE_CLIENT_VIEW',
+                    'client+' => 'ROLE_CLIENT_MODIF',
+
                 ],
                 'expanded' => true,
                 'multiple' => true,
@@ -55,6 +59,13 @@ class UsersFormType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control mb-1'
                 ),
+                ])
+            ->add('missions', EntityType::class, [
+                'class'=>Missions::class, 
+                'choice_label'=>'titre', 
+                'label' => 'Nom des missions auxquelles cet utilisateur a accès (ctrl clic pour choix multiple)',
+                // 'expanded' => true,
+                'multiple' => true,
                 ])
         ;
     }

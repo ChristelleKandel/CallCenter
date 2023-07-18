@@ -50,9 +50,9 @@ class MissionsType extends AbstractType
                 // 'expanded' => true,
                 'multiple' => true,
                 ])
-                ->add('commentaires', null, [
-                    'label' => 'Commentaires de la mission à afficher avant le script'
-                ])
+            ->add('commentaires', null, [
+                'label' => 'Commentaires de la mission à afficher avant le script'
+            ])
             ->add('script', null, [
                 'label' => 'Script pour les TC, avec {{user.nom}} pour le nom TC et {{prospect.nom}} pour le nom du prospect'
             ])

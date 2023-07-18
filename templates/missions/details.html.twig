@@ -3,6 +3,7 @@
 {% block title %}Missions{% endblock %}
 
 {% block body %}
+    <div class="d-flex justify-content-center"><a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_missions_actuelles') }}"><i class="fa-solid fa-arrow-left"></i> Retour</a></div>
     <h1>Mission {{ mission.titre }}</h1>
     DU {{ mission.dateDebut|date('d-m-Y') }} au {{ mission.dateFin|date('d-m-Y') }}
     <h2>Une mission confiée par {{ mission.societe.nom }} </h2>
@@ -21,48 +22,7 @@
         {{ mission.commentaires }}
     </p>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Email_rdv_client_text</th>
-                <td>{{ mission.emailRdvClientText }}</td>
-            </tr>
-            <tr>
-                <th>Email_rdv_prospect_text</th>
-                <td>{{ mission.emailRdvProspectText }}</td>
-            </tr>
-            <tr>
-                <th>Champs</th>
-                <td>
-                {% for champ in mission.champs %}
-                    {{ champ.label }}
-                {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>Fichier</th>
-                <td>{{ mission.fichier }}</td>
-            </tr>
-            <tr>
-                <th>Statuts</th>
-                <td>
-                {% for statut in mission.statuts %}
-                    {{ statut.type }}
-                {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>Pré-remplis</th>
-                <td>
-                {% for prerempli in mission.preremplis %}
-                    {{ prerempli.texte }}
-                {% endfor %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_missions_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour à la liste des missions</a>
-    <a href="{{ path('app_missions_edit', {'id': mission.id}) }}" class="btn btn-lg btn-green d-grid gap-2 col-6 mx-auto my-2">Modifier</a>
-    {{ include('missions/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_missions_actuelles') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour missions</a>
 {% endblock %}

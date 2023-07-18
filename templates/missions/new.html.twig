@@ -3,9 +3,9 @@
 {% block title %}create{% endblock %}
 
 {% block body %}
+    <div class="d-flex justify-content-center"><a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_missions_index') }}"><i class="fa-solid fa-arrow-left"></i> Retour</a></div>
     <h1 class="text-center">Nouvelle mission</h1>
 
     {{ include('missions/_form.html.twig') }}
 
-    <a href="{{ path('app_missions_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour à la liste des missions</a>
 {% endblock %}

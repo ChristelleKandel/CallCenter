@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center"><a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_users') }}"><i class="fa-solid fa-arrow-left"></i> Retour</a></div>
+    <h1 class="text-center">Fiche de {{ user.prenom }} {{user.nom }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Missions accessibles</th>
+                <td>{% for mission in user.missions %}
+                    {{ mission.titre }},
+                {% endfor %}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Société</th>
+                <td>{{ user.societe.nom }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ModifiedAt</th>
+                <td>{{ user.modifiedAt ? user.modifiedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_users_fiche', {'id': user.id}) }}">edit</a>
+
+    {{ include('users/_delete_form.html.twig') }}
+{% endblock %}
