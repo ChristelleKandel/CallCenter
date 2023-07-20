@@ -70,6 +70,20 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         ;
     }
 
+   /**
+    * @return Users[] Returns an array of Users objects
+    */
+   public function findByTeam($team): array
+   {
+       return $this->createQueryBuilder('u')
+           ->andWhere('u.team = :val')
+           ->setParameter('val', $team)
+           ->orderBy('u.nom', 'ASC')
+        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    /**
 //     * @return Users[] Returns an array of Users objects
