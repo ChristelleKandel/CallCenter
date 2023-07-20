@@ -41,7 +41,7 @@ class UsersController extends AbstractController
     {
         // par défaut retourne la liste de tous les salariés triés par date d’arrivée descendante.
         return $this->render('users/liste.html.twig', [
-            'users' => $usersRepository->findBy([], ['nom' => 'desc']),
+            'users' => $usersRepository->findBy([], ['nom' => 'asc']),
             'clients' => $usersRepository->findByTeam(1),
             'internes' => $usersRepository->findByTeam(2),
         ]);

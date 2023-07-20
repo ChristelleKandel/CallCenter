@@ -259,7 +259,6 @@ td a:hover{
         width: 100%;
         min-height: 150px;
     }
-
 }
 
 #missions_champs label, #missions_preremplis label, #missions_statuts label{
@@ -267,4 +266,16 @@ td a:hover{
 }
 #missions_champs, #missions_preremplis, #missions_statuts{
     border: solid 1px #9ba6a5;
+}
+
+/* Mise en forme de la navigation interne des users */
+#myTab li button{
+    color: black !important;
+}
+#myTab li button:hover{
+    background-color: #f8f9fa !important;
+}
+#myTab li button .active{
+    color: #681239 !important;
+    font-weight:600 !important;
 }
