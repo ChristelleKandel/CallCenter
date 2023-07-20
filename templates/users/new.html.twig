@@ -3,9 +3,11 @@
 {% block title %}New Users{% endblock %}
 
 {% block body %}
-    <div class="d-flex justify-content-center"><a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_users') }}"><i class="fa-solid fa-arrow-left"></i> Retour</a></div>
-    <h1 class="text-center">Nouvel utilisateur</h1>
-
-    {{ include('users/_form.html.twig') }}
-
+    <div class="row">
+        <div class="col-md-6 mx-auto"> 
+            <div class="d-flex justify-content-center"><a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_users') }}"><i class="fa-solid fa-arrow-left"></i> Retour</a></div>
+            <h1 class="text-center">Nouvel utilisateur</h1>
+            {{ include('users/_form.html.twig') }}
+    </div>
+    </div>
 {% endblock %}

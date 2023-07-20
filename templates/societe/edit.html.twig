@@ -3,11 +3,43 @@
 {% block title %}Edit Societe{% endblock %}
 
 {% block body %}
-    <h1>Edit Societe</h1>
-
-    {{ include('societe/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_societe_index') }}">back to list</a>
-
-    {{ include('societe/_delete_form.html.twig') }}
+    <div class="row">
+        <div class="col-md-8 mx-auto"> 
+            <h1>{{ societe.nom }}</h1>
+            {{ form_errors(form) }}
+            {{ form_start(form, {'attr': {'class': 'my-2'}}) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.nom) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.logo) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.adresse) }}
+                    </div>
+                    <div class="col-md-2">
+                        {{ form_row(form.code_postal) }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_row(form.ville) }}
+                    </div>
+                    <div class="col-md-5">
+                        {{ form_row(form.nom_contact) }}
+                    </div>
+                    <div class="col-md-3">
+                    {{ form_row(form.tel) }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_row(form.email) }}
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                <button type="submit" class="btn btn-lg btn-green d-grid gap-2 w-100">Enregistrer les modifications</button>
+                <a href="{{ path('app_societe_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-12 mx-auto my-2">Retour à la liste des sociétés</a>
+                
+            {{ form_end(form) }}
+            {{ include('societe/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

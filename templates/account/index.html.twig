@@ -12,8 +12,11 @@
             <p> Email: {{ app.user.email }}</p>
             <p> Société: {{ app.user.societe.nom }}</p>
             <p> <small> Compte créé le {{ app.user.createdAt|date('d/m/Y') }} </small> </p>
-            <p> <a href="{{ path('app_account_edit') }}">Modifier mon compte</a> | <a href="{{ path('app_account_password') }}">Changer mon mot de passe </a> </p>
-            <p> <a href="{{ path('app_missions_index') }}"> Allez sur la page des missions </a> </p>
+            <p> 
+            <a class="btn btn-lg btn-orange d-grid gap-2 col-6 mx-auto my-2" href="{{ path('app_account_edit') }}">Modifier mon compte</a> 
+            <a class="btn btn-lg btn-violet d-grid gap-2 col-6 mx-auto my-2" href="{{ path('app_account_password') }}">Changer mon mot de passe </a>
+            <a class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2" href="{{ path('app_missions_index') }}"> Aller sur la page des missions </a> 
+            </p>
         </div>
     </div>
 </div>
