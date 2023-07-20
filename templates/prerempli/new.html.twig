@@ -3,9 +3,16 @@
 {% block title %}New Prerempli{% endblock %}
 
 {% block body %}
-    <h1>Create new Prerempli</h1>
-
-    {{ include('prerempli/_form.html.twig') }}
-
-    <a href="{{ path('app_prerempli_index') }}">back to list</a>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_prerempli_index') }}">
+                    <i class="fa-solid fa-arrow-left"></i> 
+                    Retour
+                </a>
+            </div>
+            <h1>Nouveau texte pré-rempli</h1>
+            {{ include('_partials/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

@@ -3,11 +3,16 @@
 {% block title %}Edit Statuts{% endblock %}
 
 {% block body %}
-    <h1>Edit Statuts</h1>
-
-    {{ include('statuts/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_statuts_index') }}">back to list</a>
-
-    {{ include('statuts/_delete_form.html.twig') }}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-lg btn-bleu my-2 mx-auto" href="{{ path('app_statuts_index') }}">
+                    <i class="fa-solid fa-arrow-left"></i> 
+                    Retour
+                </a>
+            </div>
+            <h1>Modifier le statut</h1>
+            {{ include('_partials/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
+    </div>
 {% endblock %}

@@ -12,9 +12,21 @@ class StatutsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type')
-            ->add('couleur')
-            ->add('definitif')
+            ->add('type', null, [
+                'label' => 'Nom du type de statut',
+                'attr' => array(
+                    'class' => 'form-control mb-1'
+                )                
+                ])
+            ->add('couleur', null, [
+                'label' => 'Code couleur #xxxxx',
+                'attr' => array(
+                    'class' => 'form-control mb-1'
+                )                
+                ])
+            ->add('definitif', null, [
+                'label' => 'Statut définitif ?',              
+                ])
         ;
     }
 

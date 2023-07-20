@@ -12,7 +12,12 @@ class PrerempliType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('texte')
+            ->add('texte', null, [
+                'label' => 'Texte du pré-rempli',
+                'attr' => array(
+                    'class' => 'form-control mb-1'
+                )                
+                ])
         ;
     }
 
