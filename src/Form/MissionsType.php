@@ -51,7 +51,6 @@ class MissionsType extends AbstractType
                 'label' => 'Nom des clients ayant accès à cette mission (ctrl clic pour choix multiple)',
                 // 'expanded' => true,
                 'multiple' => true,
-    
                 ])
             ->add('commentaires', null, [
                 'label' => 'Commentaires de la mission à afficher avant le script'
