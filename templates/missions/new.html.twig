@@ -10,14 +10,17 @@
 
     {{ include('_partials/_form.html.twig') }}
     <div class="row col-md-6 mx-auto">
-        <div class="d-flex justify-content-center col-md-6 mx-auto d-grid gap-2">
+        <div class="d-flex justify-content-center col-md-4 mx-auto d-grid gap-2">
             <a href="{{ path('app_statuts_index') }}" class="btn btn-lg btn-bleu m-100" target="_blank">
                 <i class="fa-solid fa-magnifying-glass"></i> 
                 Les statuts
             </a>
         </div>
-        <div class="d-flex justify-content-center col-md-6 mx-auto d-grid gap-2">
+        <div class="d-flex justify-content-center col-md-4 mx-auto d-grid gap-2">
             <a href="{{ path('app_prerempli_index') }}" class="btn btn-lg btn-bleu" target="_blank"><i class="fa-solid fa-magnifying-glass"></i> Les pré-remplis</a>
+        </div>
+        <div class="d-flex justify-content-center col-md-4 mx-auto d-grid gap-2">
+            <a href="{{ path('app_champs_index') }}" class="btn btn-lg btn-bleu" target="_blank"><i class="fa-solid fa-magnifying-glass"></i> Les champs</a>
         </div>
     </div>
 {% endblock %}

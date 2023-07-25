@@ -30,10 +30,10 @@ class Champs
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $extras = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $visibleForm = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $modifiableClient = null;
 
     #[ORM\ManyToMany(targetEntity: Missions::class, mappedBy: 'champs')]

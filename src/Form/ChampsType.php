@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Champs;
+use App\Entity\Missions;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ChampsType extends AbstractType
@@ -24,7 +26,13 @@ class ChampsType extends AbstractType
             ->add('obligatoire')
             ->add('multiple')
             ->add('valueMultiple')
-            ->add('missions')
+            ->add('missions', EntityType::class, [
+                'class'=>Missions::class,
+                'choice_label'=>'titre',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Missions ayant ce champ',
+            ])
         ;
     }
 

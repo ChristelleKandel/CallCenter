@@ -3,11 +3,11 @@
 {% block title %}Edit Champs{% endblock %}
 
 {% block body %}
-    <h1>Edit Champs</h1>
+    <h1 class="text-center">Modifier un champ</h1>
 
-    {{ include('champs/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('_partials/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('app_champs_index') }}">back to list</a>
+    <a href="{{ path('app_champs_index') }}" class="btn btn-lg btn-bleu d-grid gap-2 col-6 mx-auto my-2">Retour à la liste</a>
 
     {{ include('champs/_delete_form.html.twig') }}
 {% endblock %}

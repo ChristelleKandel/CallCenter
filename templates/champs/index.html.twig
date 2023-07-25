@@ -3,12 +3,12 @@
 {% block title %}Champs index{% endblock %}
 
 {% block body %}
-    <h1>Champs index</h1>
+    <h1>Tous les champs pré-enregistrés</h1>
+    <a href="{{ path('app_champs_new') }}" class="btn btn-lg btn-green d-grid gap-2 col-6 mx-auto my-2">Nouveau champ standard</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom_champ</th>
                 <th>Label</th>
                 <th>Type_champ</th>
@@ -27,7 +27,6 @@
         <tbody>
         {% for champ in champs %}
             <tr>
-                <td>{{ champ.id }}</td>
                 <td>{{ champ.nomChamp }}</td>
                 <td>{{ champ.label }}</td>
                 <td>{{ champ.typeChamp }}</td>
@@ -41,8 +40,8 @@
                 <td>{{ champ.multiple ? 'Yes' : 'No' }}</td>
                 <td>{{ champ.valueMultiple }}</td>
                 <td>
-                    <a href="{{ path('app_champs_show', {'id': champ.id}) }}">show</a>
-                    <a href="{{ path('app_champs_edit', {'id': champ.id}) }}">edit</a>
+                    <a href="{{ path('app_champs_show', {'id': champ.id}) }}" class="btn btn-green"><i class="fa-solid fa-magnifying-glass"></i> Voir plus</a>
+                    <a href="{{ path('app_champs_edit', {'id': champ.id}) }}" class="btn btn-bleu">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -52,6 +51,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_champs_new') }}">Create new</a>
 {% endblock %}
