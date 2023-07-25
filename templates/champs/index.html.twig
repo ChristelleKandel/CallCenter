@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Champs index{% endblock %}
+
+{% block body %}
+    <h1>Champs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_champ</th>
+                <th>Label</th>
+                <th>Type_champ</th>
+                <th>Nullable</th>
+                <th>Extras</th>
+                <th>VisibleForm</th>
+                <th>ModifiableClient</th>
+                <th>Position</th>
+                <th>Triable</th>
+                <th>Obligatoire</th>
+                <th>Multiple</th>
+                <th>ValueMultiple</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for champ in champs %}
+            <tr>
+                <td>{{ champ.id }}</td>
+                <td>{{ champ.nomChamp }}</td>
+                <td>{{ champ.label }}</td>
+                <td>{{ champ.typeChamp }}</td>
+                <td>{{ champ.nullable ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.extras }}</td>
+                <td>{{ champ.visibleForm ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.modifiableClient ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.position }}</td>
+                <td>{{ champ.triable ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.obligatoire ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.multiple ? 'Yes' : 'No' }}</td>
+                <td>{{ champ.valueMultiple }}</td>
+                <td>
+                    <a href="{{ path('app_champs_show', {'id': champ.id}) }}">show</a>
+                    <a href="{{ path('app_champs_edit', {'id': champ.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_champs_new') }}">Create new</a>
+{% endblock %}

@@ -39,6 +39,21 @@ class Champs
     #[ORM\ManyToMany(targetEntity: Missions::class, mappedBy: 'champs')]
     private Collection $missions;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $position = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $triable = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $obligatoire = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $multiple = null;
+
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $valueMultiple = null;
+
     public function __construct()
     {
         $this->missions = new ArrayCollection();
@@ -156,6 +171,66 @@ class Champs
         if ($this->missions->removeElement($mission)) {
             $mission->removeChamp($this);
         }
+
+        return $this;
+    }
+
+    public function getPosition(): ?string
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?string $position): static
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    public function isTriable(): ?bool
+    {
+        return $this->triable;
+    }
+
+    public function setTriable(?bool $triable): static
+    {
+        $this->triable = $triable;
+
+        return $this;
+    }
+
+    public function isObligatoire(): ?bool
+    {
+        return $this->obligatoire;
+    }
+
+    public function setObligatoire(?bool $obligatoire): static
+    {
+        $this->obligatoire = $obligatoire;
+
+        return $this;
+    }
+
+    public function isMultiple(): ?bool
+    {
+        return $this->multiple;
+    }
+
+    public function setMultiple(?bool $multiple): static
+    {
+        $this->multiple = $multiple;
+
+        return $this;
+    }
+
+    public function getValueMultiple(): ?string
+    {
+        return $this->valueMultiple;
+    }
+
+    public function setValueMultiple(?string $valueMultiple): static
+    {
+        $this->valueMultiple = $valueMultiple;
 
         return $this;
     }

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Champs{% endblock %}
+
+{% block body %}
+    <h1>Champs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ champ.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_champ</th>
+                <td>{{ champ.nomChamp }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ champ.label }}</td>
+            </tr>
+            <tr>
+                <th>Type_champ</th>
+                <td>{{ champ.typeChamp }}</td>
+            </tr>
+            <tr>
+                <th>Nullable</th>
+                <td>{{ champ.nullable ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Extras</th>
+                <td>{{ champ.extras }}</td>
+            </tr>
+            <tr>
+                <th>VisibleForm</th>
+                <td>{{ champ.visibleForm ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ModifiableClient</th>
+                <td>{{ champ.modifiableClient ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ champ.position }}</td>
+            </tr>
+            <tr>
+                <th>Triable</th>
+                <td>{{ champ.triable ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Obligatoire</th>
+                <td>{{ champ.obligatoire ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Multiple</th>
+                <td>{{ champ.multiple ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ValueMultiple</th>
+                <td>{{ champ.valueMultiple }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_champs_index') }}">back to list</a>
+
+    <a href="{{ path('app_champs_edit', {'id': champ.id}) }}">edit</a>
+
+    {{ include('champs/_delete_form.html.twig') }}
+{% endblock %}
