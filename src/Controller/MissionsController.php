@@ -89,6 +89,28 @@ class MissionsController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/{id}/duplicate', name: 'app_missions_duplicate', methods: ['GET', 'POST'])]
+    public function duplicate(Request $request, Missions $mission, MissionsRepository $missionsRepository): Response
+    {
+        $duplicate = new Missions();
+        $duplicate = clone $mission;
+        $duplicate->setId(null);
+        $form = $this->createForm(MissionsType::class, $duplicate);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $missionsRepository->save($duplicate, true);
+
+            return $this->redirectToRoute('app_missions_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('missions/new.html.twig', [
+            'mission' => $duplicate,
+            'form' => $form,
+        ]);
+
+        return $this->redirectToRoute('app_missions_index', [], Response::HTTP_SEE_OTHER);
+    }
 
     #[Route('/{id}', name: 'app_missions_delete', methods: ['POST'])]
     public function delete(Request $request, Missions $mission, MissionsRepository $missionsRepository): Response

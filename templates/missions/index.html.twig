@@ -32,6 +32,7 @@
                 <td>
                     <a href="{{ path('app_missions_show', {'id': mission.id}) }}" class="btn btn-green"><i class="fa-solid fa-magnifying-glass"></i> Voir plus</a>
                     <a href="{{ path('app_missions_edit', {'id': mission.id}) }}" class="btn btn-bleu">Modifier</a>
+                    <a href="{{ path('app_missions_duplicate', {'id': mission.id}) }}" class="btn btn-orange">Dupliquer</a>
                 </td>
             </tr>
         {% else %}

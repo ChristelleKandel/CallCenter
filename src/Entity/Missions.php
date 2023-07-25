@@ -65,6 +65,11 @@ class Missions
         $this->statuts = new ArrayCollection();
         $this->preremplis = new ArrayCollection();
     }
+    
+    public function setId(): ?string
+    {
+        return $this->id;
+    }
 
     public function getId(): ?int
     {
